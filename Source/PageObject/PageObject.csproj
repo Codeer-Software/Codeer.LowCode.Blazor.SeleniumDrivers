@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Selenium.StandardControls" Version="0.59.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="127.0.6533.8800" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Codeer.LowCode.Blazor.SeleniumDrivers\Codeer.LowCode.Blazor.SeleniumDrivers.csproj" />
+  </ItemGroup>
+
+</Project>

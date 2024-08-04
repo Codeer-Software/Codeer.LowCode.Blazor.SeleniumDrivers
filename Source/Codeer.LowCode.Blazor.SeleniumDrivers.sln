@@ -5,6 +5,12 @@ VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codeer.LowCode.Blazor.SeleniumDrivers", "Codeer.LowCode.Blazor.SeleniumDrivers\Codeer.LowCode.Blazor.SeleniumDrivers.csproj", "{A0F16AB2-F5DC-49DC-A411-D1E5D5855973}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{75C54466-ABA7-4706-A34D-5C01408E2981}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PageObject", "PageObject\PageObject.csproj", "{A59C6F75-C5F5-434D-A267-A0F8D1995AE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scenario", "Scenario\Scenario.csproj", "{4016CA39-505D-4B21-9B11-1213E481D289}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,21 @@ Global
 		{A0F16AB2-F5DC-49DC-A411-D1E5D5855973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0F16AB2-F5DC-49DC-A411-D1E5D5855973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0F16AB2-F5DC-49DC-A411-D1E5D5855973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59C6F75-C5F5-434D-A267-A0F8D1995AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59C6F75-C5F5-434D-A267-A0F8D1995AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59C6F75-C5F5-434D-A267-A0F8D1995AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59C6F75-C5F5-434D-A267-A0F8D1995AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4016CA39-505D-4B21-9B11-1213E481D289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4016CA39-505D-4B21-9B11-1213E481D289}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4016CA39-505D-4B21-9B11-1213E481D289}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4016CA39-505D-4B21-9B11-1213E481D289}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A59C6F75-C5F5-434D-A267-A0F8D1995AE2} = {75C54466-ABA7-4706-A34D-5C01408E2981}
+		{4016CA39-505D-4B21-9B11-1213E481D289} = {75C54466-ABA7-4706-A34D-5C01408E2981}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {159FF27A-6D7B-4D93-A6AB-9A8ACA0560CC}

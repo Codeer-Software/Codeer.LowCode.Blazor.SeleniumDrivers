@@ -41,14 +41,18 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
             finder.Find<FileFieldSearchDriver>();
     }
 
-    public class LinkFieldSearchDriver : ComponentBase
+    public class LinkFieldSearchDriver<TListLayout, TSearchLayout>  : ComponentBase 
+        where TListLayout : ListLayoutBase
+        where TSearchLayout : ComponentBase
     {
         public TextBoxDriver Text => ByTagName("input").Wait().Find<TextBoxDriver>();
         public ButtonDriver Clear => ByCssSelector("button.btn-close").Wait().Find<ButtonDriver>();
         public ButtonDriver Search => ByCssSelector("button:has(.bi-search)").Wait().Find<ButtonDriver>();
+        public SearchFieldDriver<TSearchLayout> LinkSearch => ByCssSelector("div[data-system='search-field']").Wait();
+        public ListFieldDriver<TListLayout> LinkList => ByCssSelector("div[data-system='list-field']").Wait();
         public LinkFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator LinkFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<LinkFieldSearchDriver>();
+        public static implicit operator LinkFieldSearchDriver<TListLayout, TSearchLayout>(ElementFinder finder) =>
+            finder.Find<LinkFieldSearchDriver<TListLayout, TSearchLayout>>();
     }
 
     public class ListFieldSearchDriver : ComponentBase
@@ -79,6 +83,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class RadioGroupFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find<CheckBoxDriver>();
+        public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public RadioGroupFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) =>
             finder.Find<RadioGroupFieldSearchDriver>();
@@ -87,9 +93,20 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class SelectFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find<CheckBoxDriver>();
+        public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public SelectFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator SelectFieldSearchDriver(ElementFinder finder) =>
             finder.Find<SelectFieldSearchDriver>();
+    }
+
+    public class SelectListItemDriver : ComponentBase
+    {
+        public IWebElement Label => Element;
+        public CheckBoxDriver CheckBox => ByTagName("input").Wait().Find<CheckBoxDriver>();
+        public SelectListItemDriver(IWebElement element) : base(element) { }
+        public static implicit operator SelectListItemDriver(ElementFinder finder) =>
+            finder.Find<SelectListItemDriver>();
     }
 
     public class TextFieldSearchDriver : ComponentBase

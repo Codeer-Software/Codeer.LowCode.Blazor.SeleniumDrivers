@@ -9,6 +9,7 @@ namespace PageObject
     public class EstimateSearchLayout : ComponentBase
     {
         public SearchGridDriver SearchGridLayoutGrid => ByCssSelector("div[data-name='SearchGridLayout']").Wait();
+        public LinkFieldSearchDriver<EstimateClientCompanyListLayout, EstimateClientCompanySearchLayout> Client => ByCssSelector("div[data-name='Client']").Wait();
 
         public EstimateSearchLayout(IWebElement element) : base(element) { }
 

@@ -8,7 +8,7 @@ namespace PageObject
 {
     public class TestAssistantCaptureLeft : ComponentBase
     {
-        public AnchorDriver B => ByCssSelector("[data-title='B']").Wait();
+        public AnchorDriver DriverTest1 => ByCssSelector("[data-title='DriverTest1']").Wait();
 
         public TestAssistantCaptureLeft(IWebElement element) : base(element) { }
 

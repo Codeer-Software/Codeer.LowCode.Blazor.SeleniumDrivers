@@ -102,7 +102,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 
     public class SelectListItemDriver : ComponentBase
     {
-        public string Text => Element.Text;
+        public IWebElement Text => ByTagName("label").Wait().Find();
         public CheckBoxDriver CheckBox => ByTagName("input").Wait().Find<CheckBoxDriver>();
         public SelectListItemDriver(IWebElement element) : base(element) { }
         public static implicit operator SelectListItemDriver(ElementFinder finder) =>

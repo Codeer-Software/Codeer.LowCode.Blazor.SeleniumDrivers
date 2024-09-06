@@ -6,7 +6,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 {
     public class TileListFieldDriver<TDetailLayout> : ComponentBase where TDetailLayout : ComponentBase
     {
-        public AnchorDriver Create => ByCssSelector("a[data-system='create']").Wait();
+        public AnchorDriver Create => ByCssSelector("button[data-system='create']").Wait();
         public ItemsControlDriver<TDetailLayout> Items => ByCssSelector(".tile-container").Wait().Find<ItemsControlDriver<TDetailLayout>>();
         public PagerDriver Pager => ByCssSelector("[role='navigation'] ul.pagination").Wait();
         public TileListFieldDriver(IWebElement element) : base(element) { }

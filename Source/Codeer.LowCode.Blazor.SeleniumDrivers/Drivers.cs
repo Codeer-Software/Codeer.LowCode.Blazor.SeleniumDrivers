@@ -6,125 +6,112 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 {
     public class BooleanFieldSearchDriver : ComponentBase
     {
-        public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public DropDownListDriver Select => ByTagName("select").Wait();
         public BooleanFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator BooleanFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<BooleanFieldSearchDriver>();
+        public static implicit operator BooleanFieldSearchDriver(ElementFinder finder) => finder.Find<BooleanFieldSearchDriver>();
     }
 
     public class DateFieldSearchDriver : ComponentBase
     {
-        public DateFieldDriver StartDate => ByTagName("input:first-child").Wait().Find<DateFieldDriver>();
-        public DateFieldDriver EndDate => ByTagName("input:last-child").Wait().Find<DateFieldDriver>();
+        public DateDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
+        public DateDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
         public DateFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator DateFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<DateFieldSearchDriver>();
+        public static implicit operator DateFieldSearchDriver(ElementFinder finder) => finder.Find<DateFieldSearchDriver>();
     }
 
     public class DateTimeFieldSearchDriver : ComponentBase
     {
-        public DateFieldDriver StartDate => ByTagName("input:first-child").Wait().Find<DateFieldDriver>();
-        public DateFieldDriver EndDate => ByTagName("input:last-child").Wait().Find<DateFieldDriver>();
+        public TextBoxDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
+        public TextBoxDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
         public DateTimeFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator DateTimeFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<DateTimeFieldSearchDriver>();
+        public static implicit operator DateTimeFieldSearchDriver(ElementFinder finder) => finder.Find<DateTimeFieldSearchDriver>();
     }
 
     public class FileFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver FileName => ByTagName("[data-search-target='filename'] input").Wait().Find<TextBoxDriver>();
-        public DropDownListDriver FileNameMatch => ByTagName("[data-search-target='filename'] select").Wait().Find<DropDownListDriver>();
-        public TextBoxDriver MinFileSize => ByTagName("[data-search-target='file-size'] input:first-child").Wait().Find<TextBoxDriver>();
-        public TextBoxDriver MaxFileSize => ByTagName("[data-search-target='file-size'] input:last-child").Wait().Find<TextBoxDriver>();
+        public TextBoxDriver FileName => ByCssSelector("input[data-search-target='filename']").Wait();
+        public DropDownListDriver FileNameMatch => ByCssSelector("select[data-search-target='filenamematch']").Wait();
+        public TextBoxDriver MinFileSize => ByCssSelector("input[data-search-target='min']").Wait();
+        public TextBoxDriver MaxFileSize => ByCssSelector("input[data-search-target='max']").Wait();
         public FileFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator FileFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<FileFieldSearchDriver>();
+        public static implicit operator FileFieldSearchDriver(ElementFinder finder) => finder.Find<FileFieldSearchDriver>();
     }
 
     public class LinkFieldSearchDriver<TListLayout, TSearchLayout>  : ComponentBase 
         where TListLayout : ListLayoutBase
         where TSearchLayout : ComponentBase
     {
-        public TextBoxDriver Text => ByTagName("input").Wait().Find<TextBoxDriver>();
-        public ButtonDriver Clear => ByCssSelector("button.btn-close").Wait().Find<ButtonDriver>();
-        public ButtonDriver Search => ByCssSelector("button:has(.bi-search)").Wait().Find<ButtonDriver>();
+        public TextBoxDriver Text => ByTagName("input").Wait();
+        public ButtonDriver Clear => ByCssSelector("button.btn-close").Wait();
+        public ButtonDriver Search => ByCssSelector("button:has(.bi-search)").Wait();
         public SearchFieldDriver<TSearchLayout> LinkSearch => ByCssSelector("div[data-system='search-field']").Wait();
         public ListFieldDriver<TListLayout> LinkList => ByCssSelector("div[data-system='list-field']").Wait();
         public LinkFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator LinkFieldSearchDriver<TListLayout, TSearchLayout>(ElementFinder finder) =>
-            finder.Find<LinkFieldSearchDriver<TListLayout, TSearchLayout>>();
+        public static implicit operator LinkFieldSearchDriver<TListLayout, TSearchLayout>(ElementFinder finder) => finder.Find<LinkFieldSearchDriver<TListLayout, TSearchLayout>>();
     }
 
     public class ListFieldSearchDriver : ComponentBase
     {
-        public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public DropDownListDriver Select => ByTagName("select").Wait();
         public ListFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator ListFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<ListFieldSearchDriver>();
+        public static implicit operator ListFieldSearchDriver(ElementFinder finder) => finder.Find<ListFieldSearchDriver>();
     }
 
     public class ModuleSelectFieldSearchDriver : ComponentBase
     {
-        public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public DropDownListDriver Select => ByTagName("select").Wait();
         public ModuleSelectFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator ModuleSelectFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<ModuleSelectFieldSearchDriver>();
+        public static implicit operator ModuleSelectFieldSearchDriver(ElementFinder finder) => finder.Find<ModuleSelectFieldSearchDriver>();
     }
 
     public class NumberFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver Min => ByTagName("input:first-child").Wait().Find<TextBoxDriver>();
-        public TextBoxDriver Max => ByTagName("input:last-child").Wait().Find<TextBoxDriver>();
+        public TextBoxDriver Min => ByCssSelector("input[data-search-target='min']").Wait();
+        public TextBoxDriver Max => ByCssSelector("input[data-search-target='max']").Wait();
         public NumberFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator NumberFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<NumberFieldSearchDriver>();
+        public static implicit operator NumberFieldSearchDriver(ElementFinder finder) => finder.Find<NumberFieldSearchDriver>();
     }
 
     public class RadioGroupFieldSearchDriver : ComponentBase
     {
-        public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
-        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find<CheckBoxDriver>();
+        public DropDownListDriver Select => ByTagName("select").Wait();
+        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait();
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public RadioGroupFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<RadioGroupFieldSearchDriver>();
+        public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) => finder.Find<RadioGroupFieldSearchDriver>();
     }
 
     public class SelectFieldSearchDriver : ComponentBase
     {
-        public DropDownListDriver Select => ByTagName("select").Wait().Find<DropDownListDriver>();
-        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find<CheckBoxDriver>();
+        public DropDownListDriver Select => ByTagName("select").Wait();
+        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait();
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public SelectFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator SelectFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<SelectFieldSearchDriver>();
+        public static implicit operator SelectFieldSearchDriver(ElementFinder finder) => finder.Find<SelectFieldSearchDriver>();
     }
 
     public class SelectListItemDriver : ComponentBase
     {
         public IWebElement Text => ByTagName("label").Wait().Find();
-        public CheckBoxDriver CheckBox => ByTagName("input").Wait().Find<CheckBoxDriver>();
+        public CheckBoxDriver CheckBox => ByTagName("input").Wait();
         public SelectListItemDriver(IWebElement element) : base(element) { }
-        public static implicit operator SelectListItemDriver(ElementFinder finder) =>
-            finder.Find<SelectListItemDriver>();
+        public static implicit operator SelectListItemDriver(ElementFinder finder) => finder.Find<SelectListItemDriver>();
     }
 
     public class TextFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver Text => ByTagName("input").Wait().Find<TextBoxDriver>();
-        public DropDownListDriver Match => ByTagName("select").Wait().Find<DropDownListDriver>();
+        public TextBoxDriver Text => ByTagName("input").Wait();
+        public DropDownListDriver Match => ByTagName("select").Wait();
         public TextFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator TextFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<TextFieldSearchDriver>();
+        public static implicit operator TextFieldSearchDriver(ElementFinder finder) => finder.Find<TextFieldSearchDriver>();
     }
 
     public class TimeFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver StartTime => ByTagName("input:first-child").Wait().Find<TextBoxDriver>();
-        public TextBoxDriver EndTime => ByTagName("input:last-child").Wait().Find<TextBoxDriver>();
+        public TextBoxDriver StartTime => ByCssSelector("input[data-search-target='min']").Wait();
+        public TextBoxDriver EndTime => ByCssSelector("input[data-search-target='max']").Wait();
         public TimeFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator TimeFieldSearchDriver(ElementFinder finder) =>
-            finder.Find<TimeFieldSearchDriver>();
+        public static implicit operator TimeFieldSearchDriver(ElementFinder finder) => finder.Find<TimeFieldSearchDriver>();
     }
 
     public class LabelFieldSearchDriver : ComponentBase

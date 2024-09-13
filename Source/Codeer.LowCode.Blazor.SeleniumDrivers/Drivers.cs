@@ -21,8 +21,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 
     public class DateTimeFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
-        public TextBoxDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
+        public DateTimeDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
+        public DateTimeDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
         public DateTimeFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator DateTimeFieldSearchDriver(ElementFinder finder) => finder.Find<DateTimeFieldSearchDriver>();
     }
@@ -108,8 +108,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 
     public class TimeFieldSearchDriver : ComponentBase
     {
-        public TextBoxDriver StartTime => ByCssSelector("input[data-search-target='min']").Wait();
-        public TextBoxDriver EndTime => ByCssSelector("input[data-search-target='max']").Wait();
+        public TimeDriver StartTime => ByCssSelector("input[data-search-target='min']").Wait();
+        public TimeDriver EndTime => ByCssSelector("input[data-search-target='max']").Wait();
         public TimeFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator TimeFieldSearchDriver(ElementFinder finder) => finder.Find<TimeFieldSearchDriver>();
     }

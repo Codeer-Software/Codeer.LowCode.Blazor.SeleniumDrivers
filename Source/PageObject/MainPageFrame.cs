@@ -8,20 +8,17 @@ namespace PageObject
 {
     public class MainLeft : ComponentBase
     {
-        public AnchorDriver Trip => ByCssSelector("[data-title='Trip']").Wait();
-        public AnchorDriver Trip_Plans => ByCssSelector("[data-title='Trip/Plans']").Wait();
-        public AnchorDriver 州 => ByCssSelector("[data-title='州']").Wait();
-        public AnchorDriver Showcase => ByCssSelector("[data-title='Showcase']").Wait();
-        public AnchorDriver ユーザー => ByCssSelector("[data-title='ユーザー']").Wait();
-        public AnchorDriver Blog => ByCssSelector("[data-title='Blog']").Wait();
-        public AnchorDriver 投稿 => ByCssSelector("[data-title='投稿']").Wait();
-        public AnchorDriver フィールドテスト => ByCssSelector("[data-title='フィールドテスト']").Wait();
-        public AnchorDriver 部署 => ByCssSelector("[data-title='部署']").Wait();
-        public AnchorDriver 所属_配属 => ByCssSelector("[data-title='所属・配属']").Wait();
-        public AnchorDriver EstimateClientCompany => ByCssSelector("[data-title='EstimateClientCompany']").Wait();
-        public AnchorDriver EstimateContactPerson => ByCssSelector("[data-title='EstimateContactPerson']").Wait();
-        public AnchorDriver Estimate => ByCssSelector("[data-title='Estimate']").Wait();
-        public AnchorDriver EstimateDetail => ByCssSelector("[data-title='EstimateDetail']").Wait();
+        public AnchorDriver Home => ByCssSelector(".navbar-brand").Wait();
+        public AnchorDriver ReadDataControls => ByCssSelector("[data-title='ReadDataControls']").Wait();
+        public AnchorDriver WriteDataControls => ByCssSelector("[data-title='WriteDataControls']").Wait();
+        public AnchorDriver LinkData => ByCssSelector("[data-title='LinkData']").Wait();
+        public AnchorDriver ReadListData => ByCssSelector("[data-title='ReadListData']").Wait();
+        public AnchorDriver ReadListDataControls => ByCssSelector("[data-title='ReadListDataControls']").Wait();
+        public AnchorDriver WriteListData => ByCssSelector("[data-title='WriteListData']").Wait();
+        public AnchorDriver ReadDetailListData => ByCssSelector("[data-title='ReadDetailListData']").Wait();
+        public AnchorDriver WriteDetailListData => ByCssSelector("[data-title='WriteDetailListData']").Wait();
+        public AnchorDriver ReadTileListData => ByCssSelector("[data-title='ReadTileListData']").Wait();
+        public AnchorDriver WriteTileListData => ByCssSelector("[data-title='WriteTileListData']").Wait();
 
         public MainLeft(IWebElement element) : base(element) { }
 
@@ -34,28 +31,6 @@ namespace PageObject
         [ComponentObjectIdentify]
         public static MainLeft AttachMainLeft(this IWebDriver driver)
             => new MappingBase(driver).ByCssSelector("[data-system='sidebar'][data-system-placement='left']").Wait();
-
-    }
-
-    public class MainRight : ComponentBase
-    {
-        public AnchorDriver Showcase => ByCssSelector("[data-title='Showcase']").Wait();
-        public AnchorDriver Prefecture => ByCssSelector("[data-title='Prefecture']").Wait();
-        public AnchorDriver ランク => ByCssSelector("[data-title='ランク']").Wait();
-        public AnchorDriver 紅茶 => ByCssSelector("[data-title='紅茶']").Wait();
-        public AnchorDriver ShopOrder => ByCssSelector("[data-title='ShopOrder']").Wait();
-
-        public MainRight(IWebElement element) : base(element) { }
-
-        public static implicit operator MainRight(ElementFinder finder) => finder.Find<MainRight>();
-    }
-
-    public static class MainRightExtensions
-    {
-
-        [ComponentObjectIdentify]
-        public static MainRight AttachMainRight(this IWebDriver driver)
-            => new MappingBase(driver).ByCssSelector("[data-system='sidebar'][data-system-placement='right']").Wait();
 
     }
 

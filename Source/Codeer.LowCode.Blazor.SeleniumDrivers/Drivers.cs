@@ -57,6 +57,20 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
         public static implicit operator ListFieldSearchDriver(ElementFinder finder) => finder.Find<ListFieldSearchDriver>();
     }
 
+    public class DetailListFieldSearchDriver : ComponentBase
+    {
+        public DropDownListDriver Select => ByTagName("select").Wait();
+        public DetailListFieldSearchDriver(IWebElement element) : base(element) { }
+        public static implicit operator DetailListFieldSearchDriver(ElementFinder finder) => finder.Find<DetailListFieldSearchDriver>();
+    }
+
+    public class TileListFieldSearchDriver : ComponentBase
+    {
+        public DropDownListDriver Select => ByTagName("select").Wait();
+        public TileListFieldSearchDriver(IWebElement element) : base(element) { }
+        public static implicit operator TileListFieldSearchDriver(ElementFinder finder) => finder.Find<TileListFieldSearchDriver>();
+    }
+
     public class ModuleSelectFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait();
@@ -75,7 +89,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class RadioGroupFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait();
-        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait();
+        public ToggleButtonDriver IsNot => new ToggleButtonDriver(ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find().GetParent());
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public RadioGroupFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) => finder.Find<RadioGroupFieldSearchDriver>();
@@ -84,7 +98,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class SelectFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait();
-        public CheckBoxDriver IsInverted => ByCssSelector(".input-group + div input[type='checkbox']").Wait();
+        public ToggleButtonDriver IsNot => new ToggleButtonDriver(ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find().GetParent());
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
         public SelectFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator SelectFieldSearchDriver(ElementFinder finder) => finder.Find<SelectFieldSearchDriver>();

@@ -8,7 +8,7 @@ namespace PageObject
 {
     public class HomeDetailLayout : ComponentBase
     {
-        public LabelFieldDriver Label => ByCssSelector("div[data-name='Label']").Wait();
+        public LabelFieldDriver TitleLabel => ByCssSelector("div[data-name='TitleLabel']").Wait();
         public ImageViewerFieldDriver LCLogo => ByCssSelector("div[data-name='LCLogo']").Wait();
 
         public HomeDetailLayout(IWebElement element) : base(element) { }

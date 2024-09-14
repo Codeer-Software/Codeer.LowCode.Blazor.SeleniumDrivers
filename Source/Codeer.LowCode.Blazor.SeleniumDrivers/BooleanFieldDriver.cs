@@ -10,6 +10,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public bool Checked => new CheckBoxDriver(Element.FindElement(By.TagName("input"))).Checked;
 
+        public string ReadOnlyText => Element.FindElement(By.TagName("span")).Text;
+
         public Action? Wait { get; set; }
 
         public BooleanFieldDriver(IWebElement element) : base(element) { }

@@ -42,7 +42,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
         where TSearchLayout : ComponentBase
     {
         public TextBoxDriver Text => ByTagName("input").Wait();
-        public ButtonDriver Clear => ByCssSelector("button.btn-close").Wait();
+        public ButtonDriver Close => ByCssSelector("button[data-system='close-modal']").Wait();
+        public ButtonDriver Clear => ByCssSelector("button[data-system='clear-link-text']").Wait();
         public ButtonDriver Search => ByCssSelector("button:has(.bi-search)").Wait();
         public SearchFieldDriver<TSearchLayout> LinkSearch => ByCssSelector("div[data-system='search-field']").Wait();
         public ListFieldDriver<TListLayout> LinkList => ByCssSelector("div[data-system='list-field']").Wait();

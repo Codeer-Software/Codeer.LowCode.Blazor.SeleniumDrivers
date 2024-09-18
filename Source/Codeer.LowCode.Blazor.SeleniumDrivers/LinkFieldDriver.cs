@@ -4,11 +4,12 @@ using Selenium.StandardControls.PageObjectUtility;
 
 namespace Codeer.LowCode.Blazor.SeleniumDrivers
 {
-    public class LinkFieldDriver<TListLayout, TSearchLayout>  : ComponentBase where TListLayout : ListLayoutBase
+    public class LinkFieldDriver<TListLayout, TSearchLayout> : ComponentBase where TListLayout : ListLayoutBase
         where TSearchLayout : ComponentBase
     {
         public TextBoxDriver Input => ByTagName("input").Wait();
-        public ButtonDriver Clear => ByCssSelector(".input-group button.btn-close").Wait();
+        public ButtonDriver Close => ByCssSelector("button[data-system='close-modal']").Wait();
+        public ButtonDriver Clear => ByCssSelector("button[data-system='clear-link-text']").Wait();
         public ButtonDriver Search => ByCssSelector(".input-group button:has(.bi-search)").Wait();
         public IWebElement ReadOnlyText => ByTagName("span").Wait().Find();
         public SearchFieldDriver<TSearchLayout> LinkSearch => ByCssSelector("div[data-system='search-field']").Wait();

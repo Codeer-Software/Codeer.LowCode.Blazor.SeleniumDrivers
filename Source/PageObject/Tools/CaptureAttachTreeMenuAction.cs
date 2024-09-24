@@ -61,7 +61,7 @@ namespace PageObject.Tools
 
         [MenuAction]
         public static void AssertReadOnlyText(BooleanFieldDriver booleanField, string accessPath)
-            => CaptureAdaptor.AddCode(accessPath + ".Text.Is(" + ToLiteral(booleanField.ReadOnlyText) + ");");
+            => CaptureAdaptor.AddCode(accessPath + ".ReadOnlyText.Text.Is(" + ToLiteral(booleanField.ReadOnlyText.Text) + ");");
 
         [MenuAction]
         public static void Assert(AnchorDriver anchor, string accessPath)

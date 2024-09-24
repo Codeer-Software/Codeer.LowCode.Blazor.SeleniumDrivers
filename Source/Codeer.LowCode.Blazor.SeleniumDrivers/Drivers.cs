@@ -96,15 +96,6 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
         public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) => finder.Find<RadioGroupFieldSearchDriver>();
     }
 
-    public class SelectFieldSearchDriver : ComponentBase
-    {
-        public DropDownListDriver Select => ByTagName("select").Wait();
-        public ToggleButtonDriver IsNot => new ToggleButtonDriver(ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find().GetParent());
-        public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
-        public SelectFieldSearchDriver(IWebElement element) : base(element) { }
-        public static implicit operator SelectFieldSearchDriver(ElementFinder finder) => finder.Find<SelectFieldSearchDriver>();
-    }
-
     public class SelectListItemDriver : ComponentBase
     {
         public IWebElement Text => ByTagName("label").Wait().Find();

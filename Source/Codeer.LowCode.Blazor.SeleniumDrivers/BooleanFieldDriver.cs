@@ -10,7 +10,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public bool Checked => new CheckBoxDriver(Element.FindElement(By.TagName("input"))).Checked;
 
-        public string ReadOnlyText => Element.FindElement(By.TagName("span")).Text;
+        public IWebElement ReadOnlyText => Element.FindElement(By.TagName("span"));
 
         public Action? Wait { get; set; }
 
@@ -46,18 +46,26 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
                     const name = __codeerTestAssistantPro.getElementName(element);
                     const label = element.querySelector('label');
                     const input = element.querySelector('input');
-                    let checked = input.checked;
-                    label.addEventListener('click', function() {{ 
-                       if (checked == input.checked) return;
-                       checked = input.checked;
-                      __codeerTestAssistantPro.pushCode(name + '.Edit(' + input.checked + ');');
-                    }}, false);
+                    const span = element.querySelector('span');
+                    if (label !== null) {{
+                        let checked = input.checked;
+                        label.addEventListener('click', function() {{ 
+                           if (checked == input.checked) return;
+                           checked = input.checked;
+                          __codeerTestAssistantPro.pushCode(name + '.Edit(' + input.checked + ');');
+                        }}, false);
 
-                    input.addEventListener('click', function() {{ 
-                       if (checked == input.checked) return;
-                       checked = input.checked;
-                      __codeerTestAssistantPro.pushCode(name + '.Edit(' + input.checked + ');');
-                    }}, false);
+                        input.addEventListener('click', function() {{ 
+                           if (checked == input.checked) return;
+                           checked = input.checked;
+                          __codeerTestAssistantPro.pushCode(name + '.Edit(' + input.checked + ');');
+                        }}, false);
+                    }}
+                    if (span !== null) {{
+                       span.addEventListener('click', function() {{ 
+                          __codeerTestAssistantPro.pushCode(name + '.ReadOnlyText.Click();');
+                        }}, false);
+                    }}
 
 ";
         }

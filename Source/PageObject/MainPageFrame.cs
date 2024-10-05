@@ -10,6 +10,7 @@ namespace PageObject
     {
         public AnchorDriver Home => ByCssSelector(".navbar-brand").Wait();
         public AnchorDriver ReadDataControls => ByCssSelector("[data-title='ReadDataControls']").Wait();
+        public AnchorDriver MultiSearch => ByCssSelector("[data-title='MultiSearch']").Wait();
         public AnchorDriver WriteDataControls => ByCssSelector("[data-title='WriteDataControls']").Wait();
         public AnchorDriver LinkData => ByCssSelector("[data-title='LinkData']").Wait();
         public AnchorDriver ReadListData => ByCssSelector("[data-title='ReadListData']").Wait();
@@ -19,6 +20,17 @@ namespace PageObject
         public AnchorDriver WriteDetailListData => ByCssSelector("[data-title='WriteDetailListData']").Wait();
         public AnchorDriver ReadTileListData => ByCssSelector("[data-title='ReadTileListData']").Wait();
         public AnchorDriver WriteTileListData => ByCssSelector("[data-title='WriteTileListData']").Wait();
+        public AnchorDriver DisplayText => ByCssSelector("[data-title='DisplayText']").Wait();
+        public AnchorDriver IsRequired => ByCssSelector("[data-title='IsRequired']").Wait();
+        public AnchorDriver IsRequiredListData => ByCssSelector("[data-title='IsRequiredListData']").Wait();
+        public AnchorDriver FieldEvent => ByCssSelector("[data-title='FieldEvent']").Wait();
+        public AnchorDriver ModuleEvent => ByCssSelector("[data-title='ModuleEvent']").Wait();
+        public AnchorDriver ModuleEvent2 => ByCssSelector("[data-title='ModuleEvent2']").Wait();
+        public AnchorDriver DetailLayouts => ByCssSelector("[data-title='DetailLayouts']").Wait();
+        public AnchorDriver ConditionData => ByCssSelector("[data-title='ConditionData']").Wait();
+        public AnchorDriver FieldSearchCondition1 => ByCssSelector("[data-title='FieldSearchCondition1']").Wait();
+        public AnchorDriver FieldSearchCondition2 => ByCssSelector("[data-title='FieldSearchCondition2']").Wait();
+        public AnchorDriver FieldSearchCondition3 => ByCssSelector("[data-title='FieldSearchCondition3']").Wait();
 
         public MainLeft(IWebElement element) : base(element) { }
 

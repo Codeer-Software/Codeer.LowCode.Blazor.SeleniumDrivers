@@ -6,7 +6,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 {
     public class ListFieldDriver<T> : ComponentBase where T : ListLayoutBase
     {
-        public ButtonDriver Create => ByCssSelector("button[data-system='create'], a[data-system='create']").Wait();
+        public ButtonDriver Create => ByCssSelector("button[data-system='create']").Wait();
         public ItemsControlDriver<T> Items => Element.FindNext(By.CssSelector("table tbody")).Wait().Find<ItemsControlDriver<T>>();
         public PagerDriver Pager => ByCssSelector("[role='navigation'] ul.pagination").Wait();
         public ListFieldDriver(IWebElement element) : base(element) { }

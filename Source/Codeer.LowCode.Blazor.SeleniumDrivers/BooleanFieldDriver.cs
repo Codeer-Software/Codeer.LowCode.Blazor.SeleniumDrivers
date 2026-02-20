@@ -18,14 +18,22 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
 
         public void Edit(bool check)
         {
+            var input = Element.FindElement(By.TagName("input"));
             var label = Element.FindElement(By.TagName("label"));
-            label.Show();
-            label.Focus();
+            var clickTarget = input;
+
+            //Toggle‚Ì‚Æ‚«‚¾‚¯Label‚ðƒNƒŠƒbƒN‚·‚é
+            var classes = input.GetAttribute("class") ?? string.Empty;
+            if (classes.Contains("btn-check") && label != null)
+                clickTarget = label;
+
+            clickTarget.Show();
+            clickTarget.Focus();
             while (Checked != check)
             {
                 try
                 {
-                    label.ClickEx();
+                    clickTarget.ClickEx();
                     if (Checked == check) break;
                     Thread.Sleep(100);
                 }

@@ -15,8 +15,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class SelectFieldSearchDriver : ComponentBase
     {
         public WaitDropDownListDriver Select => ByTagName("select").Wait();
-        public ToggleButtonDriver IsNot => new ToggleButtonDriver(ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find().GetParent());
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public SelectFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator SelectFieldSearchDriver(ElementFinder finder) => finder.Find<SelectFieldSearchDriver>();
     }

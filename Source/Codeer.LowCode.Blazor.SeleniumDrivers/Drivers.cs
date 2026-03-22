@@ -15,6 +15,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public DateDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
         public DateDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public DateFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator DateFieldSearchDriver(ElementFinder finder) => finder.Find<DateFieldSearchDriver>();
     }
@@ -23,6 +24,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public DateTimeDriver StartDate => ByCssSelector("input[data-search-target='min']").Wait();
         public DateTimeDriver EndDate => ByCssSelector("input[data-search-target='max']").Wait();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public DateTimeFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator DateTimeFieldSearchDriver(ElementFinder finder) => finder.Find<DateTimeFieldSearchDriver>();
     }
@@ -37,7 +39,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
         public static implicit operator FileFieldSearchDriver(ElementFinder finder) => finder.Find<FileFieldSearchDriver>();
     }
 
-    public class LinkFieldSearchDriver<TListLayout, TSearchLayout>  : ComponentBase 
+    public class LinkFieldSearchDriver<TListLayout, TSearchLayout>  : ComponentBase
         where TListLayout : ListLayoutBase
         where TSearchLayout : ComponentBase
     {
@@ -47,6 +49,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
         public ButtonDriver Search => ByCssSelector("button:has(.bi-search)").Wait();
         public SearchFieldDriver<TSearchLayout> LinkSearch => ByCssSelector("div[data-system='search-field']").Wait();
         public ListFieldDriver<TListLayout> LinkList => GetModal().ByCssSelector("div[data-system='list-field']").Wait();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public LinkFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator LinkFieldSearchDriver<TListLayout, TSearchLayout>(ElementFinder finder) => finder.Find<LinkFieldSearchDriver<TListLayout, TSearchLayout>>();
         private ElementFinder GetModal() => new ElementFinder(Element.FindElement(By.XPath("/html/body")).FindElement(By.CssSelector("div.modal.show")));
@@ -84,6 +87,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public TextBoxDriver Min => ByCssSelector("input[data-search-target='min']").Wait();
         public TextBoxDriver Max => ByCssSelector("input[data-search-target='max']").Wait();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public NumberFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator NumberFieldSearchDriver(ElementFinder finder) => finder.Find<NumberFieldSearchDriver>();
     }
@@ -91,8 +95,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     public class RadioGroupFieldSearchDriver : ComponentBase
     {
         public DropDownListDriver Select => ByTagName("select").Wait();
-        public ToggleButtonDriver IsNot => new ToggleButtonDriver(ByCssSelector(".input-group + div input[type='checkbox']").Wait().Find().GetParent());
         public ItemsControlDriver<SelectListItemDriver> MultipleSelect => ByCssSelector("div.input-group .select-list").Wait().Find<ItemsControlDriver<SelectListItemDriver>>();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public RadioGroupFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator RadioGroupFieldSearchDriver(ElementFinder finder) => finder.Find<RadioGroupFieldSearchDriver>();
     }
@@ -117,6 +121,7 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public TimeDriver StartTime => ByCssSelector("input[data-search-target='min']").Wait();
         public TimeDriver EndTime => ByCssSelector("input[data-search-target='max']").Wait();
+        public SearchModeDriver SearchMode => new SearchModeDriver(Element);
         public TimeFieldSearchDriver(IWebElement element) : base(element) { }
         public static implicit operator TimeFieldSearchDriver(ElementFinder finder) => finder.Find<TimeFieldSearchDriver>();
     }

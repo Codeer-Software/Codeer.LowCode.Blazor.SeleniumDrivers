@@ -9,6 +9,8 @@ namespace Codeer.LowCode.Blazor.SeleniumDrivers
     {
         public TextBoxDriver Input => ByTagName("input").Wait();
         public ButtonDriver Close => GetModal().ByCssSelector("button[data-system='close-modal']").Wait();
+        public ButtonDriver Ok => GetModal().ByCssSelector("button[data-system='ok-button']").Wait();
+        public ButtonDriver Cancel => GetModal().ByCssSelector("button[data-system='cancel-button']").Wait();
         public ButtonDriver Clear => ByCssSelector("button[data-system='clear-link-text']").Wait();
         public ButtonDriver Search => ByCssSelector(".input-group button:has(.bi-search)").Wait();
         public IWebElement ReadOnlyText => ByTagName("span").Wait().Find();
